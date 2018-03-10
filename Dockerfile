@@ -14,12 +14,16 @@
 
 FROM ubuntu:16.04
 
-CMD [ "/usr/bin/rsync" ]
+ENTRYPOINT [ "/usr/local/bin/dumb-init", "--" ]
+CMD        [ "/usr/bin/rsync", "--help" ]
 
 # Prepare APT depedencies
 RUN set -ex \
     && apt-get update \
-    && DEBIAN_FRONTEND=noninteractiev apt-get install -y openssh-client rsync \
-    && apt-get -y autoremove \
-    && apt-get -y autoclean \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y curl openssh-client rsync \
     && rm -rf /var/lib/apt/lists/*
+
+# Install dumb-init
+RUN set -ex \
+    && curl -skL https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64 > /usr/local/bin/dumb-init \
+    && chmod 0755 /usr/local/bin/dumb-init
