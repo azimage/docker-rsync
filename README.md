@@ -10,6 +10,12 @@ rsync is an open source utility that provides fast incremental file transfer. rs
 
 Learn more about Rsync: <https://rsync.samba.org/>
 
+Supported Tags and Respective `Dockerfile` Links
+------------------------------------------------
+
+-   [`latest` (master/Dockerfile)](https://github.com/alvistack/docker-rsync/blob/master/Dockerfile)
+-   [`3.1` (3.1/Dockerfile)](https://github.com/alvistack/docker-rsync/blob/3.1/Dockerfile)
+
 Overview
 --------
 
