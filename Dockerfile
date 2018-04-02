@@ -14,8 +14,8 @@
 
 FROM ubuntu:16.04
 
-ENTRYPOINT [ "/usr/local/bin/dumb-init", "--" ]
-CMD        [ "/usr/bin/rsync", "--help" ]
+ENTRYPOINT [ "dumb-init", "--" ]
+CMD        [ "rsync", "$@" ]
 
 # Prepare APT depedencies
 RUN set -ex \
